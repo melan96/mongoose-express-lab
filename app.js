@@ -1,10 +1,16 @@
 const Express = require('express');
-
+const bodyparser = require('body-parser');
 const app = Express();
 
 
+
+//add bodyparser middleware
+app.use(bodyparser.json());
+
 //render static content
 app.use('/static', Express.static(__dirname + '/public/static-content'));
+
+
 
 const user = {
     firstName: String,
