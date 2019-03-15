@@ -94,7 +94,7 @@ app.delete('/delete/:id', (req, res) => {
             userList.splice(index, 1);
             res.send(elem);
         } else {
-
+            res.sendStatus(404);
         }
 
 
