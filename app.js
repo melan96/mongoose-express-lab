@@ -63,7 +63,44 @@ app.get('/user/:id', (req, res) => {
     });
 })
 
+//update user
+app.put('/update/:id', (req, res) => {
 
+    const requestID = req.params.id;
+
+    let putuser = userList.filter((res) => {
+        return res.user_id == requestID
+    })[0];
+    const index = userList.indexOf(putuser);
+    const key = Object.keys(req.body);
+    console.log("--> " + key);
+    key.forEach(k => {
+        putuser[key] = req.body[key];
+    });
+
+    userList[index] = putuser;
+    res.send(putuser);
+
+});
+
+
+app.delete('/delete/:id', (req, res) => {
+    const removeID = req.params.id;
+
+    userList.forEach(elem => {
+        if (elem.user_id == removeID) {
+            const index = userList.indexOf(elem);
+            console.log("remove index -> " + index);
+            userList.splice(index, 1);
+            res.send(elem);
+        } else {
+
+        }
+
+
+
+    });
+});
 
 
 
